@@ -34,13 +34,14 @@ def mainPage():
 @app.route('/hello')
 @app.route('/hello/<name>')
 @app.route('/hello/<name>/<int:age>')
-def helloPage(name=None, age=None):
-    if name == None and age == None:
-        return '<h1>Hola! Bienvenido a mi página con Flask!</h1>'
-    elif age == None:
-        return f'<h1>Hola, {name}! Bienvenido a mi página</h1>'
-    else:
-        return f'<h1>Hola, {name}! Bienvenido a mi página web.<br>Tu edad es de {age} años.</h1>'
+@app.route('/hello/<name>/<int:age>/<email>')
+def helloPage(name=None, age=None, email=None):
+    my_data = {
+        'name': name,
+        'age': age,
+        'email': email
+    }
+    return render_template('hello.html', data=my_data)
 
 
 @app.route('/code/<path:code>')
