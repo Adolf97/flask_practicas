@@ -5,10 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi sitio web - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('mainPage') }}">Inicio</a></li>
+            <li><a href="{{ url_for('helloPage') }}">Hello Page</a></li>
+            <li><a href="{{ url_for('code', code='print(code)') }}">Code Page</a></li>
+            <li><a href="{{ url_for('registro') }}">Registro</a></li>
+        </ul>
+    </nav>
+
     {% block content %}
     <!-- Aquí adentro va todo el contenido que va a cambiar dependiendo la página / ruta -->
     {% endblock %}
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
