@@ -4,15 +4,15 @@
 {% block content %}
     <h1>Bienvenido a mi página web con Flask</h1>
     {% if name %}
-    <p>Hola, {{ name | upper }}</p>
+        <p>Hola, {{ name | upper }}</p>
     {% else %}
-    <p>Hola, desconocido</p>
+        <p>Hola, desconocido</p>
     {% endif %}
 
     <h2>Lista de amigos</h2>
     <ul>
         {% for friend in friends | reverse %}
-        <li>{{ friend }}</li>
+            <li>{{ friend }}</li>
         {% endfor %}
     </ul>
 
