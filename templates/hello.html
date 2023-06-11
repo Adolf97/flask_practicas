@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} Hello {% endblock %}
+
+{% block content %}
+    {% if data.name is none and data.age is none and data.email is none %}
+        <h1>Hola! Bienvenido a mi página con Flask!</h1>
+    {% elif data.age is none and data.email is none %}
+        <h1>Hola, {{ data.name }}! Bienvenido a mi página</h1>
+    {% elif data.email is none %}
+        <h1>Hola, {{ data.name }}! Bienvenido a mi página web.</h1>
+        <br>
+        <h2>Tu edad es de {{ data.age }} años.</h2>
+    {% else %}
+        <h1>Tus datos son los siguientes:</h1>
+        <ul>
+            <li>Tu nombre es: {{ data.name }}</li>
+            <li>Tu edad es: {{ data.age }}</li>
+            <li>T correo electrónico es: {{ data.email }}</li>
+        </ul>
+    {% endif %}
+{% endblock %}
