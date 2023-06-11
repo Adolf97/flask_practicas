@@ -1,13 +1,34 @@
-from flask import Flask
+from flask import Flask, render_template
 from markupsafe import escape
+from datetime import datetime
 
 app = Flask(__name__)
+
+
+@app.add_template_filter
+def today(date):
+    return date.strftime('%d-%m-%Y')
+# app.add_template_filter(today, 'today')
+
+
+@app.add_template_global
+def repeat(s, n):
+    return s * n
+# app.add_template_global(repeat, 'repeat')
 
 
 @app.route('/')
 @app.route('/index')
 def mainPage():
-    return '<h1>Página principal</h1>'
+    name = 'adolfo'
+    friends = ['Adolfo', 'Carlos', 'Cristian', 'Jorge']
+    date = datetime.now()
+    return render_template(
+        'index.html',
+        name=name,
+        friends=friends,
+        date=date
+    )
 
 
 @app.route('/hello')
